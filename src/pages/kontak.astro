@@ -16,10 +16,13 @@ import { siteConfig } from "@/config/site";
       <div class="rounded-3xl border border-border bg-white p-6 shadow-soft">
         <div class="grid gap-4">
           <a class="rounded-2xl bg-surface-soft p-5 font-semibold text-ink hover:text-primary-deep" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-          <a class="rounded-2xl bg-surface-soft p-5 font-semibold text-ink hover:text-primary-deep" href={siteConfig.instagramUrl}>{siteConfig.instagram}</a>
+          <a class="rounded-2xl bg-surface-soft p-5 font-semibold text-ink hover:text-primary-deep" href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram {siteConfig.instagram}</a>
           <a class="rounded-2xl bg-surface-soft p-5 font-semibold text-ink hover:text-primary-deep" href={siteConfig.domain}>{siteConfig.website}</a>
         </div>
-        <div class="mt-6"><Button href={`mailto:${siteConfig.email}`}>Kirim Email</Button></div>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <Button href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer">Ikuti Instagram</Button>
+          <Button href={`mailto:${siteConfig.email}`} variant="secondary">Kirim Email</Button>
+        </div>
       </div>
     </Container>
   </section>

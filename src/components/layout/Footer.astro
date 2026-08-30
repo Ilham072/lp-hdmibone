@@ -31,12 +31,12 @@ import { siteConfig } from "@/config/site";
       <h2 class="mb-4 text-base font-bold">Kontak</h2>
       <div class="grid gap-3 text-sm text-[#B8D3CD]">
         <a href={`mailto:${siteConfig.email}`} class="hover:text-accent">{siteConfig.email}</a>
-        <a href={siteConfig.instagramUrl} class="hover:text-accent">{siteConfig.instagram}</a>
+        <a href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer" class="hover:text-accent">Instagram {siteConfig.instagram}</a>
         <a href={siteConfig.domain} class="hover:text-accent">{siteConfig.website}</a>
       </div>
     </div>
   </div>
   <div class="border-t border-white/10 px-5 py-5 text-center text-xs text-[#B8D3CD]">
-    © {new Date().getFullYear()} HDMI Kabupaten Bone. Semua hak dilindungi.
+    &copy; {new Date().getFullYear()} HDMI Kabupaten Bone. Semua hak dilindungi.
   </div>
 </footer>

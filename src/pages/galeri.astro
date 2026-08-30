@@ -2,24 +2,22 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Container from "@/components/common/Container.astro";
 import SectionHeader from "@/components/common/SectionHeader.astro";
+import Button from "@/components/common/Button.astro";
+import { siteConfig } from "@/config/site";
 
-const gallery = [
-  ["/images/content/profil-hdmi-bone.jpeg", "Profil HDMI Kabupaten Bone", "Materi pengenalan organisasi HDMI Kabupaten Bone."],
-  ["/images/content/pengurus/pengurus-inti.jpeg", "Pengurus Inti", "Struktur pengurus inti HDMI Kabupaten Bone periode 2026-2031."],
-  ["/images/content/pengurus/bidang-kaderisasi.jpeg", "Bidang Kaderisasi", "Struktur bidang kaderisasi HDMI Kabupaten Bone periode 2026-2031."],
-  ["/images/content/pengurus/bidang-kajian-riset.jpeg", "Bidang Kajian & Riset", "Struktur bidang kajian dan riset HDMI Kabupaten Bone periode 2026-2031."],
-  ["/images/content/pengurus/bidang-daiyah.jpeg", "Bidang Daiyah", "Struktur bidang daiyah HDMI Kabupaten Bone periode 2026-2031."],
-  ["/images/content/pengurus/bidang-perencanaan-pelaksanaan.jpeg", "Bidang Perencanaan & Pelaksanaan", "Struktur bidang perencanaan dan pelaksanaan HDMI Kabupaten Bone periode 2026-2031."],
-  ["/images/content/pengurus/bidang-humas.jpeg", "Bidang Humas", "Struktur bidang humas HDMI Kabupaten Bone periode 2026-2031."]
-];
+type GalleryItem = [image: string, title: string, description: string];
+
+const gallery: GalleryItem[] = [];
+
 ---
 
 <BaseLayout title="Galeri" description="Dokumentasi kegiatan, pembinaan, kolaborasi, dan pengabdian HDMI Kabupaten Bone.">
   <section class="py-16 md:py-24">
     <Container>
       <SectionHeader eyebrow="Galeri" title="Potret Perjalanan Dakwah" description="Dokumentasi dari berbagai kegiatan, perjumpaan, pembinaan, dan pengabdian HDMI Kabupaten Bone." />
-      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {gallery.map(([image, title, description]) => (
+      {gallery.length > 0 ? (
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {gallery.map(([image, title, description]) => (
           <article class="overflow-hidden rounded-2xl border border-border bg-white">
             <img src={image} alt={title} class="aspect-[4/5] w-full bg-surface-soft object-cover" loading="lazy" />
             <div class="p-5">
@@ -27,8 +25,41 @@ const gallery = [
               <p class="mt-2 text-sm leading-6 text-body">{description}</p>
             </div>
           </article>
-        ))}
+          ))}
+        </div>
+      ) : (
+        <div class="rounded-2xl border border-dashed border-border bg-surface-soft px-6 py-12 text-center">
+          <p class="text-sm font-bold uppercase text-primary-deep">Galeri belum tersedia</p>
+          <p class="mx-auto mt-3 max-w-xl text-sm leading-6 text-body">
+            Dokumentasi kegiatan akan ditambahkan setelah materi foto resmi siap dipublikasikan.
+          </p>
+        </div>
+      )}
+    </Container>
+  </section>
+
+  <section class="bg-surface-soft py-16 md:py-24">
+    <Container>
+      <div class="mb-10 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+        <SectionHeader eyebrow="Instagram" title="Feed Terbaru HDMI Bone" description="Embed profil Instagram resmi HDMI Kabupaten Bone, dilengkapi cuplikan feed manual sebagai fallback tampilan." />
+        <Button href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer">Ikuti {siteConfig.instagram}</Button>
+      </div>
+
+      <div class="mb-8 overflow-hidden rounded-2xl border border-border bg-white p-4 shadow-sm">
+        <div class="flex justify-center">
+          <blockquote
+            class="instagram-media"
+            data-instgrm-permalink={siteConfig.instagramUrl}
+            data-instgrm-version="14"
+            style="background:#fff; border:0; margin:0 auto; max-width:540px; min-width:326px; width:100%;"
+          >
+            <a href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer" class="block rounded-xl bg-surface-soft px-6 py-8 text-center text-sm font-bold text-primary-deep">
+              Buka profil Instagram {siteConfig.instagram}
+            </a>
+          </blockquote>
+        </div>
       </div>
     </Container>
+    <script is:inline async src="https://www.instagram.com/embed.js"></script>
   </section>
 </BaseLayout>
