@@ -3,75 +3,205 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Container from "@/components/common/Container.astro";
 import SectionHeader from "@/components/common/SectionHeader.astro";
 
-const leadership = [
+const coreLeadership = [
   {
-    division: "Pengurus Inti",
-    image: "/images/content/pengurus/pengurus-inti.jpeg",
-    members: [
-      ["Muh. Syahril Sabirin, S.H", "Ketua Umum"],
-      ["Muh. Nur Musbir, S.Pd.", "Sekretaris Umum"],
-      ["Irwang, S.Pd.", "Bendahara Umum"]
-    ]
+    name: "Muh. Syahril Sabirin, S.H",
+    role: "Ketua Umum",
+    photo: "/images/content/pengurus/individual/muh-syahril-sabirin.png"
   },
   {
+    name: "Muh. Nur Musbir, S.Pd.",
+    role: "Sekretaris Umum",
+    photo: "/images/content/pengurus/individual/muh-nur-musbir.png"
+  },
+  {
+    name: "Irwang, S.Pd.",
+    role: "Bendahara Umum",
+    photo: "/images/content/pengurus/individual/irwang.png"
+  }
+];
+
+const divisions = [
+  {
     division: "Bidang Kaderisasi",
-    image: "/images/content/pengurus/bidang-kaderisasi.jpeg",
+    summary: "Mengelola pembinaan, penguatan kapasitas, dan proses kaderisasi dai muda.",
+    head: {
+      name: "Asdar, S.H",
+      role: "Ketua Bidang",
+      photo: "/images/content/pengurus/individual/asdar.png"
+    },
     members: [
-      ["Asdar, S.H", "Ketua Bidang"],
-      ["Ahmad Fajri, S.Pd.", "Anggota"],
-      ["Rahmat Hidayat, S.Pd.", "Anggota"],
-      ["Mahmud", "Anggota"]
+      {
+        name: "Ahmad Fajri, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/ahmad-fajri.png"
+      },
+      {
+        name: "Rahmat Hidayat, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/rahmat-hidayat.png"
+      },
+      {
+        name: "Mahmud",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/mahmud.png"
+      }
     ]
   },
   {
     division: "Bidang Kajian & Riset",
-    image: "/images/content/pengurus/bidang-kajian-riset.jpeg",
+    summary: "Menguatkan tradisi ilmu, kajian, literasi, dan pengembangan gagasan dakwah.",
+    head: {
+      name: "Muh. Haedar, S.Ag.",
+      role: "Ketua Bidang",
+      photo: "/images/content/pengurus/individual/muh-haedar.png"
+    },
     members: [
-      ["Muh. Haedar, S.Ag.", "Ketua Bidang"],
-      ["Sulaiman, S.Pd., M.Pd., DMM.", "Anggota"],
-      ["Muhammad Akbar, S.Pd.", "Anggota"],
-      ["Erwin, S.Pd.", "Anggota"]
+      {
+        name: "Sulaiman, S.Pd., M.Pd., DMM.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/sulaiman.png"
+      },
+      {
+        name: "Muhammad Akbar, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/muhammad-akbar.png"
+      },
+      {
+        name: "Erwin, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/erwin.png"
+      }
     ]
   },
   {
     division: "Bidang Daiyah",
-    image: "/images/content/pengurus/bidang-daiyah.jpeg",
+    summary: "Mengembangkan ruang dakwah, pembinaan, dan kontribusi dai perempuan HDMI Bone.",
+    head: {
+      name: "Khaerunnisa, S.Pd.",
+      role: "Ketua Bidang",
+      photo: "/images/content/pengurus/individual/khaerunnisa.png"
+    },
     members: [
-      ["Khaerunnisa, S.Pd.", "Ketua Bidang"],
-      ["Helmalia Dwi Yulianti, S.Pd.", "Anggota"],
-      ["Fani Rahmacari, S.Pd., M.Pd.", "Anggota"],
-      ["A. Dini Jumriana Adha, S.Pd.", "Anggota"],
-      ["Nur Astillah Astin, S.Pd.", "Anggota"],
-      ["Nur Fitria Wahyuni, S.Pd.", "Anggota"],
-      ["Nurul Aulia Ramadhani, S.Pd.", "Anggota"],
-      ["Maria Ulfa, S.Pd.", "Anggota"],
-      ["Iftah Amellia, S.Pd.", "Anggota"],
-      ["Rahmaton, S.Pd.", "Anggota"],
-      ["Sartiani Jumala, S.Pd.", "Anggota"],
-      ["Rezky Awalilah, S.Pd.", "Anggota"],
-      ["A. Imrayanti, S.Pd.", "Anggota"]
+      {
+        name: "Helmalia Dwi Yulianti, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/helmalia-dwi-yulianti.png"
+      },
+      {
+        name: "Fani Rahmasari, S.Pd., M.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/fani-rahmasari.png"
+      },
+      {
+        name: "A. Dini Jumriana Adha, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/a-dini-jumriana-adha.png"
+      },
+      {
+        name: "Nur Astilah Astin, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/nur-astilah-astin.png"
+      },
+      {
+        name: "Nur Fitria Wahyuni, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/nur-fitria-wahyuni.png"
+      },
+      {
+        name: "Nurul Aulia Ramadhani, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/nurul-aulia-ramadhani.png"
+      },
+      {
+        name: "Maria Ulfa, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/maria-ulfa.png"
+      },
+      {
+        name: "Iffah Amelia, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/iffah-amelia.png"
+      },
+      {
+        name: "Rahmatan, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/rahmatan.png"
+      },
+      {
+        name: "Satriani Junaid, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/satriani-junaid.png"
+      },
+      {
+        name: "Rezky Awaliah, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/rezky-awaliah.png"
+      },
+      {
+        name: "A. Irmayanti, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/a-irmayanti.png"
+      }
     ]
   },
   {
     division: "Bidang Perencanaan & Pelaksanaan",
-    image: "/images/content/pengurus/bidang-perencanaan-pelaksanaan.jpeg",
+    summary: "Menata perencanaan program, pelaksanaan kegiatan, dan evaluasi gerakan.",
+    head: {
+      name: "Muh. Tahir Syahmin, S.Pd.",
+      role: "Ketua Bidang",
+      photo: "/images/content/pengurus/individual/muh-tahir-syahmin.png"
+    },
     members: [
-      ["Muh. Tahir Syahmin, S.Pd.", "Ketua Bidang"],
-      ["Sultan Arrsyid", "Anggota"],
-      ["Muh. Nurham, S.E., M.E", "Anggota"]
+      {
+        name: "Sultan Arrsyid",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/sultan-arrsyid.png"
+      },
+      {
+        name: "Muh. Nurham, S.E., M.E",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/muh-nurham.png"
+      }
     ]
   },
   {
     division: "Bidang Humas",
-    image: "/images/content/pengurus/bidang-humas.jpeg",
+    summary: "Mengelola komunikasi publik, dokumentasi, publikasi, dan relasi organisasi.",
+    head: {
+      name: "Mujaiz Walandah, S.Pd.",
+      role: "Ketua Bidang",
+      photo: "/images/content/pengurus/individual/mujaiz-walandah.png"
+    },
     members: [
-      ["Mujais Walandah, S.Pd.", "Ketua Bidang"],
-      ["Aryoga Hidayatullah, S.Pd.", "Anggota"],
-      ["Alwi Ahmad Ashiddiq, S.Sos.", "Anggota"],
-      ["Muhammad Sattuo, S.H", "Anggota"],
-      ["Muhammad Ilham Nur Furqan, S.T", "Anggota"]
+      {
+        name: "Aryoga Hidayatullah, S.Pd.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/aryoga-hidayatullah.png"
+      },
+      {
+        name: "Alwi Ahmad Ashiddiq, S.Sos.",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/alwi-ahmad-ashiddiq.png"
+      },
+      {
+        name: "Muhammad Sattuo, S.H",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/muhammad-sattuo.png"
+      },
+      {
+        name: "Muhammad Ilham Nur Furqan, S.T",
+        role: "Anggota",
+        photo: "/images/content/pengurus/individual/muhammad-ilham-nur-furqan.png"
+      }
     ]
   }
+];
+
+const allMembers = [
+  ...coreLeadership,
+  ...divisions.flatMap((division) => [division.head, ...division.members])
 ];
 ---
 
@@ -85,14 +215,14 @@ const leadership = [
   </section>
 
   <section class="py-16 md:py-24">
-    <Container class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+    <Container class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
       <div>
         <SectionHeader eyebrow="Mengapa Kami Hadir" title="Menjaga Cahaya Dakwah di Tengah Perubahan Zaman" />
+        <figure class="mt-8 max-w-sm overflow-hidden rounded-3xl border border-border bg-white p-2 shadow-sm">
+          <img src="/images/content/profil-hdmi-bone.jpeg" alt="Profil organisasi HDMI Kabupaten Bone" class="w-full rounded-2xl object-cover" />
+        </figure>
       </div>
       <div class="prose-content">
-        <figure class="mb-8 overflow-hidden rounded-3xl border border-border bg-white">
-          <img src="/images/content/profil-hdmi-bone.jpeg" alt="Profil organisasi HDMI Kabupaten Bone" class="w-full object-cover" />
-        </figure>
         <p>Kabupaten Bone memiliki akar keislaman yang kuat dan warisan budaya yang luhur. Namun setiap zaman menghadirkan tantangannya sendiri.</p>
         <p>Perubahan sosial, perkembangan teknologi digital, tantangan generasi muda, dan kebutuhan dakwah yang lebih dekat dengan masyarakat menjadi ruang pengabdian yang perlu dijawab.</p>
         <p>HDMI Bone hadir untuk melengkapi, menguatkan, dan menjangkau ruang pembinaan yang membutuhkan perhatian berkelanjutan.</p>
@@ -124,23 +254,52 @@ const leadership = [
   <section class="py-16 md:py-24">
     <Container>
       <SectionHeader eyebrow="Pengurus Daerah 2026-2031" title="Struktur Pengurus HDMI Kabupaten Bone" description="Struktur ini disusun dari materi visual yang diberikan. Data dapat diperbarui jika ada koreksi nama, gelar, atau susunan bidang." />
-      <div class="grid gap-8">
-        {leadership.map((group) => (
-          <article class="grid overflow-hidden rounded-3xl border border-border bg-white shadow-sm lg:grid-cols-[360px_1fr]">
-            <img src={group.image} alt={`${group.division} HDMI Kabupaten Bone periode 2026-2031`} class="h-full min-h-[320px] w-full bg-surface-soft object-cover" loading="lazy" />
-            <div class="p-6 md:p-8">
-              <h2 class="text-2xl font-bold text-ink">{group.division}</h2>
-              <div class="mt-6 grid gap-3 sm:grid-cols-2">
-                {group.members.map(([name, role]) => (
-                  <div class="rounded-2xl bg-surface-soft p-4">
-                    <h3 class="font-bold text-ink">{name}</h3>
-                    <p class="mt-1 text-sm text-body">{role}</p>
-                  </div>
+      <div class="rounded-3xl border border-border bg-surface-soft p-5 md:p-8">
+        <div class="mx-auto max-w-5xl">
+          <div class="grid gap-5 md:grid-cols-3 md:items-end">
+            <article class="order-2 flex overflow-hidden rounded-3xl border border-border bg-white p-2 shadow-sm md:order-1">
+              <img src={coreLeadership[1].photo} alt={`${coreLeadership[1].name} - ${coreLeadership[1].role}`} class="aspect-[5/7] w-full self-end rounded-2xl object-contain object-bottom" loading="lazy" />
+            </article>
+            <article class="order-1 flex overflow-hidden rounded-3xl border-2 border-primary bg-white p-2 shadow-soft md:order-2 md:-mt-6">
+              <img src={coreLeadership[0].photo} alt={`${coreLeadership[0].name} - ${coreLeadership[0].role}`} class="aspect-[5/7] w-full self-end rounded-2xl object-contain object-bottom" loading="lazy" />
+            </article>
+            <article class="order-3 flex overflow-hidden rounded-3xl border border-border bg-white p-2 shadow-sm">
+              <img src={coreLeadership[2].photo} alt={`${coreLeadership[2].name} - ${coreLeadership[2].role}`} class="aspect-[5/7] w-full self-end rounded-2xl object-contain object-bottom" loading="lazy" />
+            </article>
+          </div>
+        </div>
+
+        <div class="my-10 flex justify-center">
+          <div class="h-12 w-px bg-border-strong"></div>
+        </div>
+
+        <div class="grid gap-8">
+          {divisions.map((group) => (
+            <section class="rounded-3xl border border-border bg-white p-5 md:p-7">
+              <div class="mb-7 grid gap-5 lg:grid-cols-[280px_1fr] lg:items-center">
+                <article class="flex overflow-hidden rounded-3xl border border-border bg-white p-2 shadow-sm">
+                  <img src={group.head.photo} alt={`${group.head.name} - ${group.head.role}`} class="aspect-[5/7] w-full self-end rounded-2xl object-contain object-bottom" loading="lazy" />
+                </article>
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-[0.08em] text-accent">Bidang</p>
+                  <h2 class="mt-3 text-2xl font-bold text-ink md:text-3xl">{group.division}</h2>
+                  <p class="mt-3 max-w-2xl text-sm leading-6 text-body">{group.summary}</p>
+                </div>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {group.members.map((member) => (
+                  <article class="flex overflow-hidden rounded-2xl border border-border bg-white p-2">
+                    <img src={member.photo} alt={`${member.name} - ${member.role}`} class="aspect-[5/7] w-full self-end rounded-xl object-contain object-bottom" loading="lazy" />
+                  </article>
                 ))}
               </div>
-            </div>
-          </article>
-        ))}
+            </section>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-8 rounded-2xl border border-border bg-surface-soft p-5 text-sm leading-6 text-body">
+        Total struktur sementara: {allMembers.length} pengurus. Data struktur dapat diperbarui jika ada koreksi nama, gelar, atau susunan bidang.
       </div>
     </Container>
   </section>
