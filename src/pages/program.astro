@@ -1,0 +1,38 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/common/Container.astro";
+import SectionHeader from "@/components/common/SectionHeader.astro";
+
+const clusters = [
+  ["Penguatan Kader dan Dai", "Membangun dai muda yang kokoh secara spiritual, luas secara intelektual, matang dalam karakter, dan siap mengabdi."],
+  ["Dakwah Generasi Muda", "Merangkul generasi muda melalui komunitas, aktivitas positif, ruang digital, dan pembinaan berkelanjutan."],
+  ["Dakwah Digital", "Menghadirkan pesan Islam melalui artikel, video pendek, desain visual, podcast, dan kampanye digital."],
+  ["Masjid sebagai Pusat Pembinaan", "Menghidupkan masjid sebagai ruang ibadah, belajar, silaturahmi, musyawarah, dan pelayanan masyarakat."],
+  ["Penguatan Keluarga", "Mendampingi keluarga agar menjadi rumah yang kuat dalam iman, pendidikan, kasih sayang, dan karakter."],
+  ["Dakwah Sosial", "Menghadirkan dakwah melalui kepedulian, pelayanan, santunan, kebersihan, dan aksi sosial."]
+];
+---
+
+<BaseLayout title="Program" description="Arah program HDMI Kabupaten Bone untuk kaderisasi, generasi muda, dakwah digital, masjid, keluarga, dan sosial.">
+  <section class="py-16 md:py-24">
+    <Container>
+      <p class="mb-4 text-xs font-bold uppercase tracking-[0.08em] text-primary-deep">Program</p>
+      <h1 class="max-w-4xl text-4xl font-bold leading-tight text-ink md:text-5xl">Gerakan yang Tumbuh dari Pembinaan</h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-body">Program HDMI Bone dirancang untuk membina kader, mendampingi generasi muda, menguatkan keluarga, menghidupkan masjid, dan memperluas jaringan dakwah di tengah masyarakat.</p>
+    </Container>
+  </section>
+  <section class="bg-surface-soft py-16 md:py-24">
+    <Container>
+      <SectionHeader eyebrow="Arah Program" title="Ruang Gerak yang Dikembangkan" description="Data di halaman ini masih dummy dan akan disesuaikan dengan program nyata yang sudah divalidasi." />
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {clusters.map(([title, description]) => (
+          <article class="rounded-2xl border border-border bg-white p-6">
+            <span class="mb-5 inline-flex rounded-full bg-accent-soft px-3 py-1 text-xs font-bold text-[#8A5400]">Program yang Dikembangkan</span>
+            <h2 class="text-xl font-bold text-ink">{title}</h2>
+            <p class="mt-3 text-sm leading-6 text-body">{description}</p>
+          </article>
+        ))}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

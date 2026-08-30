@@ -1,0 +1,34 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/common/Container.astro";
+import SectionHeader from "@/components/common/SectionHeader.astro";
+
+const gallery = [
+  ["/images/content/profil-hdmi-bone.jpeg", "Profil HDMI Kabupaten Bone", "Materi pengenalan organisasi HDMI Kabupaten Bone."],
+  ["/images/content/pengurus/pengurus-inti.jpeg", "Pengurus Inti", "Struktur pengurus inti HDMI Kabupaten Bone periode 2026-2031."],
+  ["/images/content/pengurus/bidang-kaderisasi.jpeg", "Bidang Kaderisasi", "Struktur bidang kaderisasi HDMI Kabupaten Bone periode 2026-2031."],
+  ["/images/content/pengurus/bidang-kajian-riset.jpeg", "Bidang Kajian & Riset", "Struktur bidang kajian dan riset HDMI Kabupaten Bone periode 2026-2031."],
+  ["/images/content/pengurus/bidang-daiyah.jpeg", "Bidang Daiyah", "Struktur bidang daiyah HDMI Kabupaten Bone periode 2026-2031."],
+  ["/images/content/pengurus/bidang-perencanaan-pelaksanaan.jpeg", "Bidang Perencanaan & Pelaksanaan", "Struktur bidang perencanaan dan pelaksanaan HDMI Kabupaten Bone periode 2026-2031."],
+  ["/images/content/pengurus/bidang-humas.jpeg", "Bidang Humas", "Struktur bidang humas HDMI Kabupaten Bone periode 2026-2031."]
+];
+---
+
+<BaseLayout title="Galeri" description="Dokumentasi kegiatan, pembinaan, kolaborasi, dan pengabdian HDMI Kabupaten Bone.">
+  <section class="py-16 md:py-24">
+    <Container>
+      <SectionHeader eyebrow="Galeri" title="Potret Perjalanan Dakwah" description="Dokumentasi dari berbagai kegiatan, perjumpaan, pembinaan, dan pengabdian HDMI Kabupaten Bone." />
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {gallery.map(([image, title, description]) => (
+          <article class="overflow-hidden rounded-2xl border border-border bg-white">
+            <img src={image} alt={title} class="aspect-[4/5] w-full bg-surface-soft object-cover" loading="lazy" />
+            <div class="p-5">
+              <h2 class="font-bold text-ink">{title}</h2>
+              <p class="mt-2 text-sm leading-6 text-body">{description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

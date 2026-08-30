@@ -1,0 +1,19 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/common/Container.astro";
+import Button from "@/components/common/Button.astro";
+---
+
+<BaseLayout title="Halaman Tidak Ditemukan" description="Halaman yang Anda cari tidak ditemukan.">
+  <section class="py-20 md:py-28">
+    <Container class="text-center">
+      <p class="text-sm font-bold uppercase tracking-[0.08em] text-primary-deep">404</p>
+      <h1 class="mt-4 text-4xl font-bold text-ink md:text-5xl">Sepertinya Anda Keluar dari Jalur</h1>
+      <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-body">Halaman yang Anda cari tidak ditemukan. Mari kembali dan lanjutkan menjelajahi perjalanan HDMI Bone.</p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <Button href="/">Kembali ke Beranda</Button>
+        <Button href="/artikel" variant="secondary">Baca Artikel</Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

@@ -1,0 +1,96 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/common/Container.astro";
+import Button from "@/components/common/Button.astro";
+import SectionHeader from "@/components/common/SectionHeader.astro";
+import NewsCard from "@/components/news/NewsCard.astro";
+import ArticleCard from "@/components/article/ArticleCard.astro";
+import { getLatestArticles, getLatestNews } from "@/utils/content";
+
+const latestNews = await getLatestNews(3);
+const latestArticles = await getLatestArticles(3);
+
+const programs = [
+  ["Penguatan Kader dan Dai", "Membina dai muda yang kokoh spiritual, luas wawasan, matang akhlak, dan siap melayani umat."],
+  ["Dakwah Generasi Muda", "Menghadirkan ruang dakwah yang dekat dengan bahasa, aktivitas, dan dunia generasi muda."],
+  ["Dakwah Digital", "Mengembangkan tulisan, desain, video, dan media digital sebagai sarana dakwah yang edukatif."],
+  ["Masjid & Masyarakat", "Menghidupkan masjid sebagai pusat ibadah, pembinaan, belajar, dan pelayanan sosial."],
+  ["Penguatan Keluarga", "Mendampingi keluarga agar menjadi fondasi iman, kasih sayang, dan pendidikan generasi."],
+  ["Dakwah Sosial", "Menghadirkan dakwah melalui kepedulian, kolaborasi, dan pelayanan nyata di masyarakat."]
+];
+---
+
+<BaseLayout>
+  <section class="overflow-hidden bg-white py-16 md:py-24">
+    <Container class="grid items-center gap-12 lg:grid-cols-[1fr_0.9fr]">
+      <div>
+        <p class="mb-4 text-xs font-bold uppercase tracking-[0.08em] text-primary-deep">Himpunan Dai Muda Indonesia Kabupaten Bone</p>
+        <h1 class="max-w-4xl text-4xl font-bold leading-tight text-ink md:text-6xl">Membentang Jalan Cahaya, Menjemput Fajar Peradaban</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-body">Menghadirkan dakwah yang membina manusia, menguatkan generasi, menghidupkan masjid, dan menumbuhkan gerakan kebaikan yang dekat dengan masyarakat.</p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button href="/tentang">Kenali HDMI</Button>
+          <Button href="/program" variant="secondary">Lihat Gerakan Kami</Button>
+        </div>
+      </div>
+      <div class="rounded-[28px] bg-gradient-to-br from-primary-soft to-white p-6 shadow-soft">
+        <img src="/images/logo-hdmi-bone.png" alt="Logo HDMI Kabupaten Bone" class="mx-auto w-full max-w-xl object-contain" />
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <Container class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+      <div class="rounded-3xl bg-dark p-8 text-white">
+        <p class="text-sm font-bold uppercase tracking-[0.08em] text-accent">Tentang HDMI Bone</p>
+        <h2 class="mt-4 text-3xl font-bold leading-tight">Dakwah yang Tumbuh Melalui Pembinaan</h2>
+      </div>
+      <div class="space-y-5 text-lg leading-8 text-body">
+        <p>HDMI Kabupaten Bone hadir dengan keyakinan bahwa dakwah tidak cukup hanya disampaikan, tetapi harus ditumbuhkan melalui pembinaan yang berkelanjutan.</p>
+        <p>Kami ingin menghadirkan dakwah yang hadir dalam pembentukan karakter, penguatan keluarga, pendampingan generasi muda, penghidupan masjid, dan pembangunan komunitas kebaikan.</p>
+        <Button href="/tentang" variant="dark">Selengkapnya Tentang HDMI</Button>
+      </div>
+    </Container>
+  </section>
+
+  <section class="bg-surface-soft py-16 md:py-24">
+    <Container>
+      <SectionHeader eyebrow="Arah Gerakan" title="Tiga Ruang Utama Dakwah HDMI Bone" description="Struktur awal program memakai data dummy dan label arah program sampai data pelaksanaan real tersedia." />
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {programs.map(([title, description]) => (
+          <article class="rounded-2xl border border-border bg-white p-6">
+            <div class="mb-5 h-12 w-12 rounded-2xl bg-primary-soft"></div>
+            <h3 class="text-xl font-bold text-ink">{title}</h3>
+            <p class="mt-3 text-sm leading-6 text-body">{description}</p>
+          </article>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <Container>
+      <SectionHeader eyebrow="Berita Terbaru" title="Jejak Gerak HDMI Bone" description="Ikuti kegiatan, pembinaan, kolaborasi, dan berbagai ikhtiar dakwah HDMI Kabupaten Bone." href="/berita" actionLabel="Lihat Semua Berita" />
+      <div class="grid gap-6 md:grid-cols-3">
+        {latestNews.map((item) => <NewsCard item={item} />)}
+      </div>
+    </Container>
+  </section>
+
+  <section class="bg-gradient-to-br from-primary to-primary-deep py-16 md:py-24">
+    <Container>
+      <SectionHeader eyebrow="Artikel & Wawasan" title="Menumbuhkan Gagasan, Menyalakan Kesadaran" description="Bacaan seputar dakwah, generasi muda, keluarga, masjid, kepemimpinan, dan tantangan umat." href="/artikel" actionLabel="Jelajahi Artikel" />
+      <div class="grid gap-6 md:grid-cols-3">
+        {latestArticles.map((item) => <ArticleCard item={item} />)}
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <Container class="rounded-3xl bg-dark p-8 text-white md:p-12">
+      <p class="text-sm font-bold uppercase tracking-[0.08em] text-accent">Kolaborasi</p>
+      <h2 class="mt-4 max-w-3xl text-3xl font-bold md:text-4xl">Dakwah Bertumbuh Melalui Kolaborasi</h2>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-[#DCEBE8]">Kami terbuka untuk membangun kolaborasi bersama masjid, lembaga pendidikan, komunitas pemuda, organisasi, pemerintah, dan berbagai elemen masyarakat.</p>
+      <div class="mt-8"><Button href="/kontak" variant="accent">Mari Berkolaborasi</Button></div>
+    </Container>
+  </section>
+</BaseLayout>

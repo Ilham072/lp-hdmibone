@@ -1,0 +1,26 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/common/Container.astro";
+import Button from "@/components/common/Button.astro";
+import { siteConfig } from "@/config/site";
+---
+
+<BaseLayout title="Kontak" description="Hubungi HDMI Kabupaten Bone melalui email, Instagram, dan website resmi.">
+  <section class="bg-surface-soft py-16 md:py-24">
+    <Container class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div>
+        <p class="mb-4 text-xs font-bold uppercase tracking-[0.08em] text-primary-deep">Kontak</p>
+        <h1 class="text-4xl font-bold leading-tight text-ink md:text-5xl">Mari Terhubung dan Berkolaborasi</h1>
+        <p class="mt-6 text-lg leading-8 text-body">Data kontak ini memakai informasi yang sudah tersedia di dokumen. WhatsApp dan alamat sekretariat dapat ditambahkan setelah data resmi tersedia.</p>
+      </div>
+      <div class="rounded-3xl border border-border bg-white p-6 shadow-soft">
+        <div class="grid gap-4">
+          <a class="rounded-2xl bg-surface-soft p-5 font-semibold text-ink hover:text-primary-deep" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          <a class="rounded-2xl bg-surface-soft p-5 font-semibold text-ink hover:text-primary-deep" href={siteConfig.instagramUrl}>{siteConfig.instagram}</a>
+          <a class="rounded-2xl bg-surface-soft p-5 font-semibold text-ink hover:text-primary-deep" href={siteConfig.domain}>{siteConfig.website}</a>
+        </div>
+        <div class="mt-6"><Button href={`mailto:${siteConfig.email}`}>Kirim Email</Button></div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

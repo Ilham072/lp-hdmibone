@@ -1,0 +1,42 @@
+---
+import { siteConfig } from "@/config/site";
+---
+
+<footer class="bg-dark text-white">
+  <div class="h-1 bg-gradient-to-r from-primary via-primary-deep to-accent"></div>
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-10">
+    <div>
+      <img src={siteConfig.logo} alt="Logo HDMI Kabupaten Bone" class="mb-5 h-16 w-auto" />
+      <p class="max-w-sm text-sm leading-7 text-[#B8D3CD]">{siteConfig.description}</p>
+    </div>
+    <div>
+      <h2 class="mb-4 text-base font-bold">Navigasi</h2>
+      <div class="grid gap-3 text-sm text-[#B8D3CD]">
+        <a href="/tentang" class="hover:text-accent">Tentang</a>
+        <a href="/program" class="hover:text-accent">Program</a>
+        <a href="/berita" class="hover:text-accent">Berita</a>
+        <a href="/artikel" class="hover:text-accent">Artikel</a>
+      </div>
+    </div>
+    <div>
+      <h2 class="mb-4 text-base font-bold">Gerakan</h2>
+      <div class="grid gap-3 text-sm text-[#B8D3CD]">
+        <span>Kaderisasi</span>
+        <span>Dakwah Digital</span>
+        <span>Masjid & Masyarakat</span>
+        <span>Dakwah Sosial</span>
+      </div>
+    </div>
+    <div>
+      <h2 class="mb-4 text-base font-bold">Kontak</h2>
+      <div class="grid gap-3 text-sm text-[#B8D3CD]">
+        <a href={`mailto:${siteConfig.email}`} class="hover:text-accent">{siteConfig.email}</a>
+        <a href={siteConfig.instagramUrl} class="hover:text-accent">{siteConfig.instagram}</a>
+        <a href={siteConfig.domain} class="hover:text-accent">{siteConfig.website}</a>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-white/10 px-5 py-5 text-center text-xs text-[#B8D3CD]">
+    © {new Date().getFullYear()} HDMI Kabupaten Bone. Semua hak dilindungi.
+  </div>
+</footer>

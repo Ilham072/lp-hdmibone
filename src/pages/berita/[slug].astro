@@ -1,0 +1,59 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/common/Container.astro";
+import Breadcrumb from "@/components/common/Breadcrumb.astro";
+import Badge from "@/components/common/Badge.astro";
+import NewsCard from "@/components/news/NewsCard.astro";
+import { formatDate } from "@/utils/date";
+import { getRelatedNews } from "@/utils/content";
+import { siteConfig } from "@/config/site";
+
+export async function getStaticPaths() {
+  const items = (await getCollection("berita")).filter((item) => !item.data.draft && item.data.publishedAt <= new Date());
+  return items.map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+const { item } = Astro.props;
+const { Content } = await item.render();
+const related = await getRelatedNews(item.slug, 3);
+const canonical = new URL(`/berita/${item.slug}`, siteConfig.domain).toString();
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  headline: item.data.title,
+  description: item.data.seoDescription ?? item.data.excerpt,
+  datePublished: item.data.publishedAt.toISOString(),
+  dateModified: (item.data.updatedAt ?? item.data.publishedAt).toISOString(),
+  author: { "@type": "Organization", name: item.data.author },
+  publisher: { "@type": "Organization", name: siteConfig.name },
+  mainEntityOfPage: canonical
+};
+---
+
+<BaseLayout title={item.data.seoTitle ?? item.data.title} description={item.data.seoDescription ?? item.data.excerpt} image={item.data.cover} type="article">
+  <article class="py-12 md:py-20">
+    <Container>
+      <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Berita", href: "/berita" }, { label: item.data.title }]} />
+      <header class="mx-auto max-w-4xl">
+        <Badge>{item.data.category}</Badge>
+        <h1 class="mt-5 text-4xl font-bold leading-tight text-ink md:text-5xl">{item.data.title}</h1>
+        <p class="mt-5 text-lg leading-8 text-body">{item.data.excerpt}</p>
+        <p class="mt-5 text-sm text-muted">Oleh {item.data.author} · <time datetime={item.data.publishedAt.toISOString()}>{formatDate(item.data.publishedAt)}</time></p>
+      </header>
+      <img src={item.data.cover ?? "/images/logo-hdmi-bone.png"} alt={item.data.coverAlt ?? item.data.title} class="mx-auto mt-10 aspect-[16/9] w-full max-w-5xl rounded-3xl bg-surface-soft object-contain p-8" />
+      <div class="prose-content mx-auto mt-12">
+        <Content />
+      </div>
+    </Container>
+  </article>
+  <section class="bg-surface-soft py-16">
+    <Container>
+      <h2 class="mb-8 text-3xl font-bold text-ink">Berita Terkait</h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        {related.map((entry) => <NewsCard item={entry} />)}
+      </div>
+    </Container>
+  </section>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+</BaseLayout>

@@ -1,0 +1,147 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/common/Container.astro";
+import SectionHeader from "@/components/common/SectionHeader.astro";
+
+const leadership = [
+  {
+    division: "Pengurus Inti",
+    image: "/images/content/pengurus/pengurus-inti.jpeg",
+    members: [
+      ["Muh. Syahril Sabirin, S.H", "Ketua Umum"],
+      ["Muh. Nur Musbir, S.Pd.", "Sekretaris Umum"],
+      ["Irwang, S.Pd.", "Bendahara Umum"]
+    ]
+  },
+  {
+    division: "Bidang Kaderisasi",
+    image: "/images/content/pengurus/bidang-kaderisasi.jpeg",
+    members: [
+      ["Asdar, S.H", "Ketua Bidang"],
+      ["Ahmad Fajri, S.Pd.", "Anggota"],
+      ["Rahmat Hidayat, S.Pd.", "Anggota"],
+      ["Mahmud", "Anggota"]
+    ]
+  },
+  {
+    division: "Bidang Kajian & Riset",
+    image: "/images/content/pengurus/bidang-kajian-riset.jpeg",
+    members: [
+      ["Muh. Haedar, S.Ag.", "Ketua Bidang"],
+      ["Sulaiman, S.Pd., M.Pd., DMM.", "Anggota"],
+      ["Muhammad Akbar, S.Pd.", "Anggota"],
+      ["Erwin, S.Pd.", "Anggota"]
+    ]
+  },
+  {
+    division: "Bidang Daiyah",
+    image: "/images/content/pengurus/bidang-daiyah.jpeg",
+    members: [
+      ["Khaerunnisa, S.Pd.", "Ketua Bidang"],
+      ["Helmalia Dwi Yulianti, S.Pd.", "Anggota"],
+      ["Fani Rahmacari, S.Pd., M.Pd.", "Anggota"],
+      ["A. Dini Jumriana Adha, S.Pd.", "Anggota"],
+      ["Nur Astillah Astin, S.Pd.", "Anggota"],
+      ["Nur Fitria Wahyuni, S.Pd.", "Anggota"],
+      ["Nurul Aulia Ramadhani, S.Pd.", "Anggota"],
+      ["Maria Ulfa, S.Pd.", "Anggota"],
+      ["Iftah Amellia, S.Pd.", "Anggota"],
+      ["Rahmaton, S.Pd.", "Anggota"],
+      ["Sartiani Jumala, S.Pd.", "Anggota"],
+      ["Rezky Awalilah, S.Pd.", "Anggota"],
+      ["A. Imrayanti, S.Pd.", "Anggota"]
+    ]
+  },
+  {
+    division: "Bidang Perencanaan & Pelaksanaan",
+    image: "/images/content/pengurus/bidang-perencanaan-pelaksanaan.jpeg",
+    members: [
+      ["Muh. Tahir Syahmin, S.Pd.", "Ketua Bidang"],
+      ["Sultan Arrsyid", "Anggota"],
+      ["Muh. Nurham, S.E., M.E", "Anggota"]
+    ]
+  },
+  {
+    division: "Bidang Humas",
+    image: "/images/content/pengurus/bidang-humas.jpeg",
+    members: [
+      ["Mujais Walandah, S.Pd.", "Ketua Bidang"],
+      ["Aryoga Hidayatullah, S.Pd.", "Anggota"],
+      ["Alwi Ahmad Ashiddiq, S.Sos.", "Anggota"],
+      ["Muhammad Sattuo, S.H", "Anggota"],
+      ["Muhammad Ilham Nur Furqan, S.T", "Anggota"]
+    ]
+  }
+];
+---
+
+<BaseLayout title="Tentang Kami" description="Profil HDMI Kabupaten Bone, arah gerakan, paradigma dakwah, dan nilai inti organisasi.">
+  <section class="bg-surface-soft py-16 md:py-24">
+    <Container>
+      <p class="mb-4 text-xs font-bold uppercase tracking-[0.08em] text-primary-deep">Tentang Kami</p>
+      <h1 class="max-w-4xl text-4xl font-bold leading-tight text-ink md:text-5xl">Gerakan Dakwah yang Berorientasi pada Pembinaan dan Peradaban</h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-body">HDMI Kabupaten Bone hadir untuk membina manusia, melahirkan kader, menguatkan umat, dan membangun gerakan dakwah yang mampu menjawab tantangan zaman.</p>
+    </Container>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <Container class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <div>
+        <SectionHeader eyebrow="Mengapa Kami Hadir" title="Menjaga Cahaya Dakwah di Tengah Perubahan Zaman" />
+      </div>
+      <div class="prose-content">
+        <figure class="mb-8 overflow-hidden rounded-3xl border border-border bg-white">
+          <img src="/images/content/profil-hdmi-bone.jpeg" alt="Profil organisasi HDMI Kabupaten Bone" class="w-full object-cover" />
+        </figure>
+        <p>Kabupaten Bone memiliki akar keislaman yang kuat dan warisan budaya yang luhur. Namun setiap zaman menghadirkan tantangannya sendiri.</p>
+        <p>Perubahan sosial, perkembangan teknologi digital, tantangan generasi muda, dan kebutuhan dakwah yang lebih dekat dengan masyarakat menjadi ruang pengabdian yang perlu dijawab.</p>
+        <p>HDMI Bone hadir untuk melengkapi, menguatkan, dan menjangkau ruang pembinaan yang membutuhkan perhatian berkelanjutan.</p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="bg-surface-soft py-16 md:py-24">
+    <Container>
+      <SectionHeader eyebrow="Nilai Inti" title="Fondasi Gerakan HDMI Bone" description="Nilai berikut adalah rumusan arah gerakan dari dokumen konten, bukan visi-misi formal sampai ditetapkan organisasi." />
+      <div class="grid gap-5 md:grid-cols-3">
+        {[
+          ["Iman", "Menjadikan kedekatan kepada Allah sebagai fondasi seluruh gerakan."],
+          ["Ilmu", "Membangun tradisi belajar agar dakwah mampu menjawab persoalan dengan benar dan relevan."],
+          ["Akhlak", "Menjadikan keteladanan sebagai bagian yang tidak terpisahkan dari dakwah."],
+          ["Ukhuwah", "Memperkuat persaudaraan dan kolaborasi di tengah keberagaman umat."],
+          ["Pengabdian", "Menghadirkan dakwah yang manfaatnya dirasakan oleh masyarakat."],
+          ["Istiqamah", "Membangun perubahan melalui proses yang konsisten dan berkelanjutan."]
+        ].map(([title, description]) => (
+          <article class="rounded-2xl border border-border bg-white p-6">
+            <h2 class="text-xl font-bold text-ink">{title}</h2>
+            <p class="mt-3 text-sm leading-6 text-body">{description}</p>
+          </article>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <Container>
+      <SectionHeader eyebrow="Pengurus Daerah 2026-2031" title="Struktur Pengurus HDMI Kabupaten Bone" description="Struktur ini disusun dari materi visual yang diberikan. Data dapat diperbarui jika ada koreksi nama, gelar, atau susunan bidang." />
+      <div class="grid gap-8">
+        {leadership.map((group) => (
+          <article class="grid overflow-hidden rounded-3xl border border-border bg-white shadow-sm lg:grid-cols-[360px_1fr]">
+            <img src={group.image} alt={`${group.division} HDMI Kabupaten Bone periode 2026-2031`} class="h-full min-h-[320px] w-full bg-surface-soft object-cover" loading="lazy" />
+            <div class="p-6 md:p-8">
+              <h2 class="text-2xl font-bold text-ink">{group.division}</h2>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                {group.members.map(([name, role]) => (
+                  <div class="rounded-2xl bg-surface-soft p-4">
+                    <h3 class="font-bold text-ink">{name}</h3>
+                    <p class="mt-1 text-sm text-body">{role}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
