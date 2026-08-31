@@ -8,7 +8,7 @@ category: "Masjid & Masyarakat"
 tags: ["masjid", "pembinaan", "masyarakat"]
 publishedAt: 2026-08-18
 featured: false
-draft: false
+draft: true
 ---
 
 Masjid bukan hanya tempat ibadah. Masjid juga dapat menjadi pusat pembinaan, pendidikan, musyawarah, dan pelayanan masyarakat.

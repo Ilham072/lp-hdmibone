@@ -8,7 +8,7 @@ category: "Dakwah"
 tags: ["peradaban", "pembinaan", "dakwah"]
 publishedAt: 2026-08-28
 featured: true
-draft: false
+draft: true
 seoDescription: "Artikel tentang dakwah sebagai proses membina manusia, menguatkan umat, dan menyiapkan peradaban."
 ---
 
