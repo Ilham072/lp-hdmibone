@@ -1,0 +1,19 @@
+---
+import type { ProgramField } from "@/data/programs";
+
+const { field } = Astro.props as { field: ProgramField };
+---
+
+<article class="group rounded-2xl border border-border bg-white p-6 transition hover:-translate-y-0.5 hover:border-primary hover:shadow-soft">
+  <a href={`/program/${field.slug}`} class="block">
+    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-soft text-sm font-bold text-primary-deep">
+      {field.icon}
+    </div>
+    <h3 class="text-xl font-bold leading-snug text-ink transition group-hover:text-primary-deep">{field.name}</h3>
+    <p class="mt-3 text-sm leading-6 text-body">{field.summary}</p>
+    <div class="mt-6 flex items-center justify-between gap-4">
+      <span class="rounded-full bg-accent-soft px-3 py-1 text-xs font-bold text-[#8A5400]">{field.programs.length} Program</span>
+      <span class="text-sm font-bold text-primary-deep">Lihat Program</span>
+    </div>
+  </a>
+</article>

@@ -1,0 +1,16 @@
+---
+import type { ProgramMeta } from "@/data/programs";
+
+const { items = [] } = Astro.props as { items?: ProgramMeta[] };
+---
+
+{items.length > 0 && (
+  <dl class="flex flex-wrap gap-2">
+    {items.map((item) => (
+      <div class="rounded-full bg-primary-soft px-3 py-1.5">
+        <dt class="sr-only">{item.label}</dt>
+        <dd class="text-xs font-bold text-primary-deep">{item.label}: {item.value}</dd>
+      </div>
+    ))}
+  </dl>
+)}
