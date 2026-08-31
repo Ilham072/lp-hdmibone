@@ -1,10 +1,11 @@
 import { getPublishedArticles, getPublishedNews } from "@/utils/content";
-import { siteConfig } from "@/config/site";
+import { programFields } from "@/data/programs";
+import { buildCanonical } from "@/utils/seo";
 
 const staticPages = ["/", "/tentang", "/program", "/berita", "/artikel", "/galeri", "/kontak"];
 
 function url(path: string) {
-  return new URL(path, siteConfig.domain).toString();
+  return buildCanonical(path);
 }
 
 export async function GET() {
@@ -12,6 +13,7 @@ export async function GET() {
   const articles = await getPublishedArticles();
   const paths = [
     ...staticPages,
+    ...programFields.map((field) => `/program/${field.slug}`),
     ...news.map((item) => `/berita/${item.slug}`),
     ...articles.map((item) => `/artikel/${item.slug}`)
   ];

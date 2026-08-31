@@ -9,7 +9,7 @@ tags: ["peradaban", "pembinaan", "dakwah"]
 publishedAt: 2026-08-28
 featured: true
 draft: false
-seoDescription: "Artikel dummy tentang dakwah sebagai proses membina manusia, menguatkan umat, dan menyiapkan peradaban."
+seoDescription: "Artikel tentang dakwah sebagai proses membina manusia, menguatkan umat, dan menyiapkan peradaban."
 ---
 
 Dakwah tidak berhenti pada penyampaian kata-kata. Ia adalah proses panjang untuk menanam nilai, membina manusia, dan menumbuhkan kesadaran.
@@ -24,4 +24,4 @@ Perubahan yang kokoh lahir dari manusia yang memiliki iman, ilmu, akhlak, dan se
 
 Pembinaan memberi ruang bagi generasi muda untuk belajar, bertumbuh, dan menemukan arah. Dari proses itu, diharapkan lahir kader yang tidak hanya memahami kebaikan, tetapi juga mampu menggerakkannya.
 
-> Konten ini adalah artikel dummy untuk menguji tampilan long-form. Isi final perlu melalui review editorial organisasi.
+Melalui pembinaan yang terarah, dakwah dapat menjadi jalan untuk menguatkan pribadi, keluarga, komunitas, dan masyarakat secara berkelanjutan.

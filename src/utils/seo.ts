@@ -5,7 +5,23 @@ export function buildTitle(title?: string) {
 }
 
 export function buildCanonical(pathname = "/") {
-  return new URL(pathname, siteConfig.domain).toString();
+  const normalizedPath = pathname === "/" ? "/" : pathname.endsWith("/") ? pathname : `${pathname}/`;
+  return new URL(normalizedPath, siteConfig.domain).toString();
+}
+
+export function buildAbsoluteUrl(path = "/") {
+  return new URL(path, siteConfig.domain).toString();
+}
+
+export function buildPublisherSchema() {
+  return {
+    "@type": "Organization",
+    name: siteConfig.name,
+    logo: {
+      "@type": "ImageObject",
+      url: buildAbsoluteUrl(siteConfig.logo)
+    }
+  };
 }
 
 export function buildOrganizationSchema() {
@@ -15,7 +31,7 @@ export function buildOrganizationSchema() {
     name: siteConfig.name,
     alternateName: siteConfig.alternateName,
     url: siteConfig.domain,
-    logo: new URL(siteConfig.logo, siteConfig.domain).toString(),
+    logo: buildAbsoluteUrl(siteConfig.logo),
     email: siteConfig.email,
     sameAs: [siteConfig.instagramUrl]
   };

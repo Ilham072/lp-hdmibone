@@ -8,6 +8,7 @@ import ArticleCard from "@/components/article/ArticleCard.astro";
 import { formatDate } from "@/utils/date";
 import { getRelatedArticles } from "@/utils/content";
 import { siteConfig } from "@/config/site";
+import { buildAbsoluteUrl, buildCanonical, buildPublisherSchema } from "@/utils/seo";
 
 export async function getStaticPaths() {
   const items = (await getCollection("artikel")).filter((item) => !item.data.draft && item.data.publishedAt <= new Date());
@@ -17,16 +18,19 @@ export async function getStaticPaths() {
 const { item } = Astro.props;
 const { Content } = await item.render();
 const related = await getRelatedArticles(item.slug, 3);
-const canonical = new URL(`/artikel/${item.slug}`, siteConfig.domain).toString();
+const canonical = buildCanonical(`/artikel/${item.slug}`);
+const image = buildAbsoluteUrl(item.data.cover ?? siteConfig.ogImage);
 const schema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: item.data.title,
   description: item.data.seoDescription ?? item.data.excerpt,
+  image: [image],
+  url: canonical,
   datePublished: item.data.publishedAt.toISOString(),
   dateModified: (item.data.updatedAt ?? item.data.publishedAt).toISOString(),
-  author: { "@type": "Organization", name: item.data.author },
-  publisher: { "@type": "Organization", name: siteConfig.name },
+  author: { "@type": "Organization", name: item.data.author, url: siteConfig.domain },
+  publisher: buildPublisherSchema(),
   mainEntityOfPage: canonical
 };
 ---
