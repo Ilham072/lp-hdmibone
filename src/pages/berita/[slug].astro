@@ -47,13 +47,15 @@ const schema = {
       </div>
     </Container>
   </article>
-  <section class="bg-surface-soft py-16">
-    <Container>
-      <h2 class="mb-8 text-3xl font-bold text-ink">Berita Terkait</h2>
-      <div class="grid gap-6 md:grid-cols-3">
-        {related.map((entry) => <NewsCard item={entry} />)}
-      </div>
-    </Container>
-  </section>
+  {related.length > 0 && (
+    <section class="bg-surface-soft py-16">
+      <Container>
+        <h2 class="mb-8 text-3xl font-bold text-ink">Berita Terkait</h2>
+        <div class="grid gap-6 md:grid-cols-3">
+          {related.map((entry) => <NewsCard item={entry} />)}
+        </div>
+      </Container>
+    </section>
+  )}
   <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)}></script>
 </BaseLayout>

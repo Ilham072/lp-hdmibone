@@ -4,10 +4,55 @@ import Container from "@/components/common/Container.astro";
 import SectionHeader from "@/components/common/SectionHeader.astro";
 import Button from "@/components/common/Button.astro";
 import { siteConfig } from "@/config/site";
+import { getPublishedNews } from "@/utils/content";
+import { formatDate } from "@/utils/date";
 
-type GalleryItem = [image: string, title: string, description: string];
+type GalleryItem = {
+  image: string;
+  title: string;
+  description: string;
+  sourceUrl: string;
+  sourceTitle: string;
+};
 
-const gallery: GalleryItem[] = [];
+const news = await getPublishedNews();
+const seenImages = new Set<string>();
+
+const gallery = news.flatMap((item) => {
+  const sourceUrl = `/berita/${item.slug}`;
+  const sourceDate = formatDate(item.data.publishedAt);
+  const images: GalleryItem[] = [];
+
+  if (item.data.cover) {
+    seenImages.add(item.data.cover);
+    images.push({
+      image: item.data.cover,
+      title: item.data.coverAlt ?? item.data.title,
+      description: `Foto utama dari berita "${item.data.title}" yang dipublikasikan pada ${sourceDate}.`,
+      sourceUrl,
+      sourceTitle: item.data.title
+    });
+  }
+
+  for (const match of item.body.matchAll(/!\[([^\]]*)\]\(([^)]+)\)/g)) {
+    const [, altText, image] = match;
+
+    if (!image || seenImages.has(image)) {
+      continue;
+    }
+
+    seenImages.add(image);
+    images.push({
+      image,
+      title: altText || item.data.title,
+      description: `Dokumentasi dari berita "${item.data.title}" yang dipublikasikan pada ${sourceDate}.`,
+      sourceUrl,
+      sourceTitle: item.data.title
+    });
+  }
+
+  return images;
+});
 
 ---
 
@@ -17,14 +62,10 @@ const gallery: GalleryItem[] = [];
       <SectionHeader eyebrow="Galeri" title="Potret Perjalanan Dakwah" description="Dokumentasi dari berbagai kegiatan, perjumpaan, pembinaan, dan pengabdian HDMI Kabupaten Bone." />
       {gallery.length > 0 ? (
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {gallery.map(([image, title, description]) => (
-          <article class="overflow-hidden rounded-2xl border border-border bg-white">
-            <img src={image} alt={title} class="aspect-[4/5] w-full bg-surface-soft object-cover" loading="lazy" />
-            <div class="p-5">
-              <h2 class="font-bold text-ink">{title}</h2>
-              <p class="mt-2 text-sm leading-6 text-body">{description}</p>
-            </div>
-          </article>
+          {gallery.map((item) => (
+            <a href={item.sourceUrl} aria-label={`Buka berita: ${item.sourceTitle}`} class="group block overflow-hidden rounded-2xl border border-border bg-white">
+              <img src={item.image} alt={item.title} class="aspect-[4/3] w-full bg-surface-soft object-cover transition duration-200 group-hover:scale-[1.02]" loading="lazy" decoding="async" />
+            </a>
           ))}
         </div>
       ) : (
@@ -41,7 +82,7 @@ const gallery: GalleryItem[] = [];
   <section class="bg-surface-soft py-16 md:py-24">
     <Container>
       <div class="mb-10 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
-        <SectionHeader eyebrow="Instagram" title="Feed Terbaru HDMI Bone" description="Embed profil Instagram resmi HDMI Kabupaten Bone, dilengkapi cuplikan feed manual sebagai fallback tampilan." />
+        <SectionHeader eyebrow="Instagram" title="Feed Terbaru HDMI Bone" description="Embed profil Instagram resmi HDMI Kabupaten Bone untuk melihat pembaruan publikasi langsung dari akun resmi." />
         <Button href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer">Ikuti {siteConfig.instagram}</Button>
       </div>
 
