@@ -10,6 +10,16 @@ const links = [
   ["Galeri", "/galeri"],
   ["Kontak", "/kontak"]
 ];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+function isActive(href: string) {
+  if (href === "/") {
+    return currentPath === "/";
+  }
+
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+}
 ---
 
 <header class="sticky top-0 z-50 border-b border-border bg-white/90 backdrop-blur">
@@ -18,10 +28,25 @@ const links = [
       <img src={siteConfig.logo} alt="Logo HDMI Kabupaten Bone" class="h-11 w-auto" />
       <span class="sr-only">{siteConfig.name}</span>
     </a>
-    <div class="hidden items-center gap-7 lg:flex">
-      {links.map(([label, href]) => (
-        <a href={href} class="text-sm font-semibold text-body transition hover:text-primary-deep">{label}</a>
-      ))}
+    <div class="hidden items-center gap-4 lg:flex">
+      {links.map(([label, href]) => {
+        const active = isActive(href);
+
+        return (
+          <a
+            href={href}
+            aria-current={active ? "page" : undefined}
+            class:list={[
+              "relative rounded-full px-2 py-2 text-sm font-semibold transition",
+              active
+                ? "text-primary-deep after:absolute after:inset-x-2 after:-bottom-2 after:h-0.5 after:rounded-full after:bg-primary"
+                : "text-body hover:bg-surface-soft hover:text-primary-deep"
+            ]}
+          >
+            {label}
+          </a>
+        );
+      })}
     </div>
     <a href="/kontak" class="hidden rounded-full bg-dark px-5 py-3 text-sm font-semibold text-white transition hover:bg-dark-soft lg:inline-flex">
       Mari Berkolaborasi
@@ -31,9 +56,24 @@ const links = [
         Menu
       </summary>
       <div class="absolute right-0 mt-3 w-64 rounded-2xl border border-border bg-white p-3 shadow-soft">
-        {links.map(([label, href]) => (
-          <a href={href} class="block min-h-11 rounded-xl px-4 py-3 text-sm font-semibold text-body hover:bg-surface-soft hover:text-primary-deep">{label}</a>
-        ))}
+        {links.map(([label, href]) => {
+          const active = isActive(href);
+
+          return (
+            <a
+              href={href}
+              aria-current={active ? "page" : undefined}
+              class:list={[
+                "block min-h-11 rounded-xl px-4 py-3 text-sm font-semibold transition",
+                active
+                  ? "text-primary-deep"
+                  : "text-body hover:bg-surface-soft hover:text-primary-deep"
+              ]}
+            >
+              {label}
+            </a>
+          );
+        })}
         <a href="/kontak" class="mt-2 flex min-h-11 items-center justify-center rounded-full bg-primary px-4 py-3 text-sm font-semibold text-ink">Mari Berkolaborasi</a>
       </div>
     </details>
