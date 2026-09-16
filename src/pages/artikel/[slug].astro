@@ -35,7 +35,13 @@ const schema = {
 };
 ---
 
-<BaseLayout title={item.data.seoTitle ?? item.data.title} description={item.data.seoDescription ?? item.data.excerpt} image={item.data.cover} type="article">
+<BaseLayout
+  title={item.data.seoTitle ?? item.data.title}
+  description={item.data.seoDescription ?? item.data.excerpt}
+  image={item.data.cover}
+  imageAlt={item.data.coverAlt ?? item.data.title}
+  type="article"
+>
   <article class="py-12 md:py-20">
     <Container>
       <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Artikel", href: "/artikel" }, { label: item.data.title }]} />
